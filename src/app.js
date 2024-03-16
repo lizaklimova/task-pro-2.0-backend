@@ -18,7 +18,7 @@ app.use(morgan('tiny'));
 app.use(
   cors({
     credentials: true,
-    origin: 'https://lizaklimova.github.io',
+    origin: 'https://task-pro-2-0.onrender.com',
   })
 );
 app.use(express.json());
