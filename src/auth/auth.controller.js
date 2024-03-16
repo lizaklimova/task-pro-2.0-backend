@@ -16,7 +16,7 @@ const registerUser = async (req, res) => {
     httpOnly: true,
     secure: true,
     sameSite: 'none',
-    domain: 'onrender',
+    domain: '.onrender.com',
   });
 
   res.status(201).json({ user });
@@ -31,7 +31,7 @@ const loginUser = async (req, res) => {
     httpOnly: true,
     secure: true,
     sameSite: 'none',
-    domain: 'onrender',
+    domain: '.onrender.com',
   });
 
   res.status(200).json({ user });
@@ -55,7 +55,7 @@ const refresh = async (req, res) => {
     httpOnly: true,
     secure: true,
     sameSite: 'none',
-    domain: 'onrender',
+    domain: '.onrender.com',
   });
 
   res.status(200).json({ user });
@@ -125,7 +125,7 @@ const googleRedirect = async (req, res) => {
     httpOnly: true,
     secure: true,
     sameSite: 'none',
-    domain: 'onrender',
+    domain: '.onrender.com',
   });
 
   return res.redirect(`${FRONTEND_URL}?token=${loginResponse.tokenAccess}`);
