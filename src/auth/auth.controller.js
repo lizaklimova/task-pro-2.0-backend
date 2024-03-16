@@ -8,16 +8,18 @@ import { User } from '../user/user.model.js';
 const { BASE_URL, FRONTEND_URL, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } =
   dotenvConfig;
 
+const cookieConfig = {
+  maxAge: 2592000000,
+  httpOnly: true,
+  secure: true,
+  sameSite: 'None',
+  // domain: '.onrender.com',
+};
+
 const registerUser = async (req, res) => {
   const { name, email, password } = req.body;
   const user = await authService.registerUser({ name, email, password });
-  res.cookie('refreshToken', user.refreshToken, {
-    maxAge: 2592000000,
-    httpOnly: true,
-    secure: true,
-    sameSite: 'Lax',
-    domain: '.onrender.com',
-  });
+  res.cookie('refreshToken', user.refreshToken, cookieConfig);
 
   res.status(201).json({ user });
 };
@@ -26,13 +28,7 @@ const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   const user = await authService.loginUser({ email, password });
-  res.cookie('refreshToken', user.refreshToken, {
-    maxAge: 2592000000,
-    httpOnly: true,
-    secure: true,
-    sameSite: 'Lax',
-    domain: '.onrender.com',
-  });
+  res.cookie('refreshToken', user.refreshToken, cookieConfig);
 
   res.status(200).json({ user });
 };
@@ -50,13 +46,7 @@ const logoutUser = async (req, res) => {
 const refresh = async (req, res) => {
   const { refreshToken } = req.cookies;
   const user = await authService.refresh(refreshToken);
-  res.cookie('refreshToken', user.refreshToken, {
-    maxAge: 2592000000,
-    httpOnly: true,
-    secure: true,
-    sameSite: 'Lax',
-    domain: '.onrender.com',
-  });
+  res.cookie('refreshToken', user.refreshToken, cookieConfig);
 
   res.status(200).json({ user });
 };
@@ -120,13 +110,7 @@ const googleRedirect = async (req, res) => {
     password: 'someRandomPassword',
   });
 
-  res.cookie('refreshToken', loginResponse.refreshToken, {
-    maxAge: 2592000000,
-    httpOnly: true,
-    secure: true,
-    sameSite: 'Lax',
-    domain: '.onrender.com',
-  });
+  res.cookie('refreshToken', loginResponse.refreshToken, cookieConfig);
 
   return res.redirect(`${FRONTEND_URL}?token=${loginResponse.tokenAccess}`);
 };
