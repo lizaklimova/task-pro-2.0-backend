@@ -13,7 +13,7 @@ const cookieConfig = {
   httpOnly: true,
   secure: true,
   sameSite: 'None',
-  // domain: '.onrender.com',
+  domain: 'task-pro-2-0.onrender.com',
 };
 
 const registerUser = async (req, res) => {
