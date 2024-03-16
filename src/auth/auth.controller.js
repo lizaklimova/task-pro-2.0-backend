@@ -14,8 +14,9 @@ const registerUser = async (req, res) => {
   res.cookie('refreshToken', user.refreshToken, {
     maxAge: 2592000000,
     httpOnly: true,
-    // secure: true,
-    sameSite: 'none',
+    secure: true,
+    sameSite: 'strict',
+    domain: 'onrender.com',
   });
 
   res.status(201).json({ user });
@@ -28,8 +29,9 @@ const loginUser = async (req, res) => {
   res.cookie('refreshToken', user.refreshToken, {
     maxAge: 2592000000,
     httpOnly: true,
-    // secure: true,
-    sameSite: 'none',
+    secure: true,
+    sameSite: 'strict',
+    domain: 'onrender.com',
   });
 
   res.status(200).json({ user });
@@ -51,8 +53,9 @@ const refresh = async (req, res) => {
   res.cookie('refreshToken', user.refreshToken, {
     maxAge: 2592000000,
     httpOnly: true,
-    // secure: true,
-    sameSite: 'none',
+    secure: true,
+    sameSite: 'strict',
+    domain: 'onrender.com',
   });
 
   res.status(200).json({ user });
@@ -120,8 +123,9 @@ const googleRedirect = async (req, res) => {
   res.cookie('refreshToken', loginResponse.refreshToken, {
     maxAge: 2592000000,
     httpOnly: true,
-    // secure: true,
-    sameSite: 'none',
+    secure: true,
+    sameSite: 'strict',
+    domain: 'onrender.com',
   });
 
   return res.redirect(`${FRONTEND_URL}?token=${loginResponse.tokenAccess}`);
