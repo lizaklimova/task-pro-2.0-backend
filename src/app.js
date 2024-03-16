@@ -18,7 +18,7 @@ app.use(morgan('tiny'));
 app.use(
   cors({
     credentials: true,
-    origin: 'https://task-pro-2-0.onrender.com',
+    origin: true,
   })
 );
 app.use(express.json());
