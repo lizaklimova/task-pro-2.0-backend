@@ -15,7 +15,7 @@ const registerUser = async (req, res) => {
     maxAge: 2592000000,
     httpOnly: true,
     secure: true,
-    sameSite: 'strict',
+    sameSite: 'None',
     domain: 'onrender.com',
   });
 
@@ -30,7 +30,7 @@ const loginUser = async (req, res) => {
     maxAge: 2592000000,
     httpOnly: true,
     secure: true,
-    sameSite: 'strict',
+    sameSite: 'None',
     domain: 'onrender.com',
   });
 
@@ -54,7 +54,7 @@ const refresh = async (req, res) => {
     maxAge: 2592000000,
     httpOnly: true,
     secure: true,
-    sameSite: 'strict',
+    sameSite: 'None',
     domain: 'onrender.com',
   });
 
@@ -124,7 +124,7 @@ const googleRedirect = async (req, res) => {
     maxAge: 2592000000,
     httpOnly: true,
     secure: true,
-    sameSite: 'strict',
+    sameSite: 'None',
     domain: 'onrender.com',
   });
 
