@@ -13,12 +13,12 @@ import backgroundRouter from './background/background.routes.js';
 import emailRouter from './email/email.routes.js';
 
 export const app = express();
+// origin: 'https://task-pro-2-0.onrender.com',
 
 app.use(morgan('tiny'));
 app.use(
   cors({
     credentials: true,
-    origin: 'https://task-pro-2-0.onrender.com',
   })
 );
 app.use(express.json());
