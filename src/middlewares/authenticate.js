@@ -19,13 +19,6 @@ export const authenticate = async (req, _, next) => {
       return;
     }
 
-    // const refreshTokenDB = await tokenService.findToken(refreshToken);
-
-    // if (!refreshTokenDB.refreshToken) {
-    //   next(HttpError(401, 'Not authorized'));
-    //   return;
-    // }
-
     const user = await User.findById(accessUser.id);
     user.tokenAccess = accessToken;
     req.user = user;
