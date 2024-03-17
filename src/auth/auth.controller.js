@@ -82,7 +82,6 @@ const googleRedirect = async (req, res) => {
   const fullUrl = `${req.protocol}://${req.get('host')}${req.originalUrl}`;
   const urlObj = new URL(fullUrl);
   const urlParams = queryString.parse(urlObj.search);
-
   const code = urlParams.code;
 
   const tokenData = await axios({
@@ -120,15 +119,7 @@ const googleRedirect = async (req, res) => {
     password: 'someRandomPassword',
   });
 
-  res.json({ user: loginResponse });
-
-  // res.cookie('refreshToken', loginResponse.refreshToken, {
-  //   maxAge: 2592000000,
-  //   httpOnly: true,
-  //   secure: true,
-  //   sameSite: 'None',
-  // });
-
+  await res.status(201).json({ user: loginResponse });
   return res.redirect(`${FRONTEND_URL}?token=${loginResponse.tokenAccess}`);
 };
 
