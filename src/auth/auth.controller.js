@@ -72,7 +72,7 @@ const googleAuth = async (req, res) => {
     access_type: 'offline',
     prompt: 'consent',
   });
-  console.log(`${BASE_URL}/auth/google-redirect`);
+
   return res.redirect(
     `https://accounts.google.com/o/oauth2/v2/auth?${stringifiedParams}`
   );
@@ -84,7 +84,7 @@ const googleRedirect = async (req, res) => {
   const urlParams = queryString.parse(urlObj.search);
 
   const code = urlParams.code;
-  console.log(`${BASE_URL}/auth/google-redirect`);
+
   const tokenData = await axios({
     url: `https://oauth2.googleapis.com/token`,
     method: 'post',
@@ -119,8 +119,6 @@ const googleRedirect = async (req, res) => {
     email: user.email,
     password: 'someRandomPassword',
   });
-
-  res.status(201).json({ user: loginResponse });
 
   // res.cookie('refreshToken', loginResponse.refreshToken, {
   //   maxAge: 2592000000,
