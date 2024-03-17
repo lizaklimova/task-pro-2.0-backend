@@ -47,7 +47,7 @@ const logoutUser = async (req, res) => {
 };
 
 const refresh = async (req, res) => {
-  const { refreshToken } = req.cookies;
+  const { refreshToken } = req.body;
   const user = await authService.refresh(refreshToken);
   // res.cookie('refreshToken', user.refreshToken, {
   //   maxAge: 2592000000,
