@@ -60,7 +60,7 @@ const refresh = async (req, res) => {
 };
 
 const googleAuth = async (req, res) => {
-  console.log(`${BASE_URL}/auth/google-redirect`);
+  console.log(BASE_URL);
   const stringifiedParams = queryString.stringify({
     client_id: GOOGLE_CLIENT_ID,
     redirect_uri: `${BASE_URL}/auth/google-redirect`,
@@ -119,8 +119,9 @@ const googleRedirect = async (req, res) => {
     password: 'someRandomPassword',
   });
 
-  await res.status(201).json({ user: loginResponse });
-  return res.redirect(`${FRONTEND_URL}?token=${loginResponse.tokenAccess}`);
+  return res.redirect(
+    `${FRONTEND_URL}?token=${loginResponse.tokenAccess}&refreshToken=${loginResponse.refreshToken}`
+  );
 };
 
 export default {
