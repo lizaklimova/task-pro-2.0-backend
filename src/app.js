@@ -15,7 +15,9 @@ import emailRouter from './email/email.routes.js';
 export const app = express();
 
 app.use(morgan('tiny'));
-app.use(cors());
+app.use(
+  cors({ credentials: true, origin: 'https://task-pro-2-0.onrender.com' })
+);
 app.use(express.json());
 app.use(express.static('public'));
 app.use(cookieParser());
