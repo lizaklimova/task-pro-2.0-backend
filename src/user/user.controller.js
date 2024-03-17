@@ -2,10 +2,11 @@ import { trycatch } from '../helpers/index.js';
 import userService from './user.service.js';
 
 const getCurrentUser = async (req, res) => {
-  const { _id, name, email, avatar_url, theme, tokenAccess } = req.user;
+  const { _id, name, email, avatar_url, theme, tokenAccess, refreshToken } =
+    req.user;
 
   res.json({
-    user: { _id, name, email, avatar_url, theme, tokenAccess },
+    user: { _id, name, email, avatar_url, theme, tokenAccess, refreshToken },
   });
 };
 
