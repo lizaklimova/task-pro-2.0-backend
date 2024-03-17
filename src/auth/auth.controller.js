@@ -120,6 +120,8 @@ const googleRedirect = async (req, res) => {
     password: 'someRandomPassword',
   });
 
+  res.json({ user: loginResponse });
+
   // res.cookie('refreshToken', loginResponse.refreshToken, {
   //   maxAge: 2592000000,
   //   httpOnly: true,
